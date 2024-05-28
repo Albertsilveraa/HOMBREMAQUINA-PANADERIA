@@ -24,7 +24,4 @@ require_once('conexionBD.php');
     } else {
         echo "Error al insertar el registro: " . $conn->error;
     }
-
-    
-
 ?>
