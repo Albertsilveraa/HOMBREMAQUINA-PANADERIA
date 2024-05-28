@@ -173,11 +173,6 @@
             
         </script>
         
-        
-        
-        
-        
-        
     </head>
     <body>
         
@@ -185,7 +180,7 @@
     include 'encabezado.php';
     ?>
 
-        <span class="site-imag"><img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/97/7762432097_b09238fc-346a-4194-832f-663753e6878e.png?cb=1662436924" height="250" width="300"></span>
+        <span class="site-imag"><img src="Imagenes/Crumble&Flake.png" height="400" width="400"></span>
 
         <!-- INTRODUCCION --> 
 
@@ -361,6 +356,7 @@
             <button class="btn" id="pedir-carrito">Pedir Carrito</button><br><br>
             <p id="precio-final">Precio Final: S/. 0.00</p>
         </div>
+        <br><br>
         
         <?php
         include 'piedepagina.php';
