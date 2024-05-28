@@ -11,7 +11,8 @@ if(isset($_POST['submit'])) {
     $contraseña = $_POST['password2'];
     
     // Preparar la consulta SQL para insertar los datos en la tabla tb_usuarios
-    $sql = "INSERT INTO tb_usuarios (Nombre, Apellido, Correo, Clave) VALUES ('$nombre', '$apellido', '$correo', '$contraseña')";
+    $sql = "INSERT INTO tb_usuarios (Nombre, Apellido, Correo, Clave) 
+                VALUES ('$nombre', '$apellido', '$correo', '$contraseña')";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
@@ -23,3 +24,4 @@ if(isset($_POST['submit'])) {
     
 }
 ?>
+
