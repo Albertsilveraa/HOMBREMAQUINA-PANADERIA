@@ -3,7 +3,8 @@
 
 require_once('conexionBD.PHP');
 ?>
-<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
+<span style="font-family: verdana, geneva, sans-serif;">
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,7 +16,7 @@ require_once('conexionBD.PHP');
 <body>
   <header class="header">
     <div class="logo">
-      <a href="index.PHP">Crumblecaffe</a>
+      <a href="index.PHP">Crumble&Flake</a>
     </div>
 
     <div class="header-icons">
@@ -44,7 +45,7 @@ require_once('conexionBD.PHP');
     <div class="main-body">
       <h2>Dashboard</h2>
       <div class="promo_card">
-        <h1>Crumblecaffe</h1>
+        <h1>Crumble&Flake</h1>
         <span>Aqui podras ver los pedidos hechos en la pagina.</span>
         <a href="index.PHP"><button>Learn More</button></a>
 

@@ -8,15 +8,19 @@
         <link rel="icon" type="Imagenes/png" href="Imagenes/Logo_Empresa.png">
         <link rel="stylesheet" type="text/css" href="CSS3/footer.css">
 
+        <?php
+    include 'encabezado.php';
+    ?>
+
         <style>
         .bodyreseña {
-            font-family: Arial, sans-serif;
+            font-family: Urbanist, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 85vh;
             background-color: #f2f2f2;
         }
         .containerreseña{
@@ -86,14 +90,29 @@
             height: 435px;
             border-radius: 4px;
         }
+
+        .dynamic-title {
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra suave */
+            background-color: black; /* Color de fondo */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra elevada */
+            text-align: center;
+            margin: 5px auto;
+            width: fit-content;
+        }
+
     </style>
 
     </head>
 
     <body>
-    <?php
-    include 'encabezado.php';
-    ?>
+    
+
+<h1 class="dynamic-title">Valoraciones</h1>
 
 <section class="bodyreseña">
 

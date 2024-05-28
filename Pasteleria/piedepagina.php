@@ -21,7 +21,6 @@
                     <div class="footer-menu">
                         <ul>
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Terminos</a></li>
                             <li><a href="Politicas.php">Política y Privacidad</a></li>
                             <li><a href="reseñas.php">Reseñas</a></li>
                         </ul>
