@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <title>Ingresar Usuario</title>
         <meta charset="utf-8">
@@ -88,6 +89,7 @@
     </style>
 
     </head>
+
     <body>
     <?php
     include 'encabezado.php';
@@ -103,7 +105,7 @@
     </div>
 
     <div class="review-form">
-        <h2>Deja tu Reseña</h2>
+        <h2>Dejanos tu Reseña</h2>
         <form action="/submit-review" method="post">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required>
