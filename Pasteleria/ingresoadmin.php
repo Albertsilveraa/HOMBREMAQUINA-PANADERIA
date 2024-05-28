@@ -8,7 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contraseña = $_POST["txtCon"];
 
     // Consulta SQL para verificar las credenciales del usuario
-    $sql = "SELECT * FROM tb_administradores WHERE Nombre = '$usuario' AND Clave = '$contraseña'";
+    $sql = "SELECT * FROM tb_administradores 
+                WHERE Nombre = '$usuario' 
+                    AND Clave = '$contraseña'";
     $result = $conn->query($sql);
 
     // Verificar si se encontraron resultados
