@@ -101,7 +101,8 @@ require_once('conexionBD.PHP');
               // Mostrar datos en la tabla
               if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) {
-                      echo "<tr><td>" . $row["id"] . "</td><td>" . $row["tipo"] . "</td><td>" . $row["precio"] . "</td><td>" . $row["cantidad"] . "</td></tr>";
+                      echo "<tr><td>" . $row["id"] . "</td><td>" . $row["tipo"] . "</td><td>" . 
+                      $row["precio"] . "</td><td>" . $row["cantidad"] . "</td></tr>";
                   }
               } else {
                   echo "<tr><td colspan='4'>No hay clientes</td></tr>";
@@ -165,14 +166,15 @@ require_once('conexionBD.PHP');
         
         while($row = $resultado->fetch_assoc()) {
             echo '<h5>' . $row["reseña"] . '</h5>';
-            echo '<span><i class="fa-solid fa-star"></i>' . $row["calidad"] . ' Estrellas </span>';
+            echo '<span><i class="fa-solid fa-star"></i>' . 
+            $row["calidad"] . ' Estrellas </span>';
         }
     } else {
       
         echo "No hay reseñas disponibles";
     }
 
-   
+
     ?>
         </div>
       </div>
