@@ -122,10 +122,32 @@ require_once('conexionBD.PHP');
     <div class="sidebar">
      
       <div class="balance">
-        <i class="fa-solid fa-sterling-sign icon"></i>
+      <i class="fa-solid fa-newspaper" style="font-size: 50px;"></i>&nbsp;
+
+
         <div class="info">
-          <h5>Harina</h5>
-          <span><i class="fa-solid fa-sterling-sign"></i>30.00 S/</span>
+        <?php
+    
+
+    $sql = "SELECT reseña, calidad FROM tb_reseñas";
+
+  
+    $resultado = $conn->query($sql);
+
+   
+    if ($resultado->num_rows > 0) {
+        
+        while($row = $resultado->fetch_assoc()) {
+            echo '<h5>' . $row["reseña"] . '</h5>';
+            echo '<span><i class="fa-solid fa-star"></i>' . $row["calidad"] . ' Estrellas </span>';
+        }
+    } else {
+      
+        echo "No hay reseñas disponibles";
+    }
+
+   
+    ?>
         </div>
       </div>
 
