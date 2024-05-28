@@ -1,134 +1,136 @@
-<!DOCTYPE html>
+<?php
+
+
+require_once('conexionBD.PHP');
+?>
+<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./public/css/desing-admin.css">
-    <title>.:: Digimedia ::.</title>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard | By Code Info</title>
+  <link rel="stylesheet" href="CSS3/intranet.css" />
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 </head>
-
 <body>
-   
+  <header class="header">
+    <div class="logo">
+      <a href="index.PHP">Crumblecaffe</a>
+    </div>
 
-    <main>
-        <h1>Seccion principal</h1>
+    <div class="header-icons">
+      <i class="fas fa-bell"></i>
+      <div class="account">
+        <img src="imagenes/chef2.jpg" alt="">
+        <h4>Jorge Luis Blanco</h4>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <nav>
+      <div class="side_navbar">
+        <span>Main Menu</span>
+        <a href="#" class="active">Dashboard</a>
+       
 
-        <div class="content-table">
-            <table id="example" class="table table-striped" style="width:100%">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">NOMBRE</th>
-                        <th scope="col">EMAIL</th>
-                        <th scope="col">SERVICIO</th>
-                        <th scope="col">NUMERO</th>
-                        <th scope="col">MENSAJE</th>
-                        <th scope="col">EMAIL MARK</th>
-                        <th scope="col">NEW</th>
-                        <th scope="col">PRODUCTION</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Hora</th>
-                        <th scope="col">ESTADO</th>
-                        <th scope="col">ACCION</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
+        <div class="links">
+          <span>Quick Link</span>
+          <a href="https://www.paypal.com/pe/home">Paypal</a>
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-body">
+      <h2>Dashboard</h2>
+      <div class="promo_card">
+        <h1>Crumblecaffe</h1>
+        <span>Aqui podras ver los pedidos hechos en la pagina.</span>
+        <a href="index.PHP"><button>Learn More</button></a>
+
+
+      </div>
+
+      <div class="history_lists">
+        <div class="list1">
+          <div class="row">
+            <h4>History</h4>
+            <a href="#">See all</a>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>tipo</th>
+                <th>precio</th>
+                <th>cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
+              // Consulta SQL para seleccionar datos
+              $sql = "SELECT * FROM tb_compras";
+              $result = $conn->query($sql);
+
+              // Mostrar datos en la tabla
+              if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                      echo "<tr><td>" . $row["id"] . "</td><td>" . $row["tipo"] . "</td><td>" . $row["precio"] . "</td><td>" . $row["cantidad"] . "</td></tr>";
+                  }
+              } else {
+                  echo "<tr><td colspan='4'>No hay clientes</td></tr>";
+              }
+              ?>
+            </tbody>
+          </table>
         </div>
 
-    </main>
+        <div class="list2">
+          <div class="row">
+            <h4>Usuarios</h4>
+            <a href="#">Upload</a>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+              </tr>
+            </thead>
+            <?php
+              // Consulta SQL para seleccionar datos
+              $sql = "SELECT * FROM tb_usuarios";
+              $result = $conn->query($sql);
 
+              // Mostrar datos en la tabla
+              if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                      echo "<tr><td>" . $row["id"] . "</td><td>" . $row["Nombre"] . "</td><td>" . $row["Apellido"] . "</td><td>" . $row["Correo"] . "</td></tr>";
+                  }
+              } else {
+                  echo "<tr><td colspan='4'>Todavia no existen usuarios</td></tr>";
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
+    <div class="sidebar">
+     
+      <div class="balance">
+        <i class="fa-solid fa-sterling-sign icon"></i>
+        <div class="info">
+          <h5>Harina</h5>
+          <span><i class="fa-solid fa-sterling-sign"></i>30.00 S/</span>
+        </div>
+      </div>
 
-    <script>
-
-        const tableBody = document.getElementById('tableBody')
-
-        tableBody.addEventListener('click', e => {
-            const button = e.target.closest('button')
-
-            if (button) {
-                const tr = button.closest('tr')
-
-                const id = tr.getAttribute('data-id')
-                const action = button.getAttribute('data-action')
-
-                if (action == 'eliminar') {
-                    tr.remove()
-
-                    fetch(`./app/trigger/intranet.php?action=DELETE&id=${id}`)
-                        .then(res => res.json())
-                        .then(console.log)
-                }
-
-                else if (action == 'canbiarEstado') {
-
-                    const formData = new FormData()
-                    formData.append('estado', button.getAttribute('data-estado') == 0 ? 1 : 0)
-
-                    fetch(`./app/trigger/intranet.php?action=UPDATE_STATUS&id=${id}`, { method: 'POST', body: formData })
-                        .then(res => res.json())
-                        .then(dataRender)
-                }
-            }
-        })
-        
-        const dataRender = () => {
-            fetch('./app/trigger/intranet.php?action=GET')
-                .then(res => res.json())
-                .then((Data = []) => {
-
-                    tableBody.innerHTML = Data.map(data => {
-                        return `
-                <tr data-id="${data.id}">
-                    <td>${data.id}</td>
-                    <td>${data.nombre}</td>
-                    <td>${data.email}</td>
-                    <td>${data.servicio}</td>
-                    <td>${data.numero}</td>
-                    <td>${data.mensaje}</td>
-                    <td>${data.emailMarck}</td>
-                    <td>${data.new}</td>
-                    <td>${data.production}</td>
-                    <td>${data.fecha_hora}</td>
-                    <td>${data.fecha_hora_actualizacion}</td>
-                    <td>
-                        <span>${data.estado == 0 ? 'pendiente' : 'Atendido'}</span>
-                    </td>
-                    <td>
-                        <button data-action="eliminar" class="btn btn-danger">Eliminar</button>
-                        ${data.estado == 0 ? `<button data-action="canbiarEstado" data-estado="${data.estado}" class="btn btn-warning">Cambiar</button>` : ''}
-                    </td>
-                </tr>
-            `
-                    }).join('')
-
-                })
-        };
-
-        dataRender();
-
-
-        document.getElementById('logout').addEventListener('click', ()=> {
-            fetch('./app/trigger/logout.php')
-                .then( res => res.json() )
-                .then( ()=> location.reload())
-        })
-
-
-
-    </script>
-    
-   
-
-    
-
-    <!-- Script para el sidebar -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="./public/js/js-admin.js"></script>
+    </div>
+  </div>
 </body>
-
 </html>
+</span>
