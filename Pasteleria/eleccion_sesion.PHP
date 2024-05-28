@@ -27,11 +27,11 @@
                     <div class="ico-sesi">
 
                         <div class="sesio">
-                            <a href="Ingresar_Usuario.html"><img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/427/4304447427_54b254de-3fb5-41ed-827d-d020b37f66b3.png?cb=1608158588"></a>
+                            <a href="Ingresar_Usuario.php"><img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/427/4304447427_54b254de-3fb5-41ed-827d-d020b37f66b3.png?cb=1608158588"></a>
                         </div>
 
                         <div class="sesio">
-                            <a href="Ingresar_Administrador.html"><img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/729/4304502729_46f79922-6135-4070-b18d-d3778a3ddf86.png?cb=1608159206"></a>
+                            <a href="Ingresar_Administrador.php"><img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/729/4304502729_46f79922-6135-4070-b18d-d3778a3ddf86.png?cb=1608159206"></a>
                         </div>
 
                     </div>
