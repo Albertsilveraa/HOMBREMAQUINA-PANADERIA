@@ -22,9 +22,8 @@
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Terminos</a></li>
-                            <li><a href="#">Privacidad</a></li>
-                            <li><a href="#">Política</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><a href="#">Política y Privacidad</a></li>
+                            <li><a href="reseñas.php">Reseñas</a></li>
                         </ul>
                     </div>
                 </div>
