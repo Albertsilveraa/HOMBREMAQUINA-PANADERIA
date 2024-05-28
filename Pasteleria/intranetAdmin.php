@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require_once ("./public/view/utils/enlacesCss.php"); ?>
+
     <link rel="stylesheet" href="./public/css/desing-admin.css">
     <title>.:: Digimedia ::.</title>
 </head>
 
 <body>
-    <?php require_once ("./public/view/utils/sidebar.php");
-    //echo json_encode(['mensaje' => 'Datos procesados en PHP con éxito']);
-    ?>
+   
 
     <main>
         <h1>Seccion principal</h1>
@@ -125,7 +123,7 @@
     
    
 
-    <?php require_once ("./public/view/utils/enlacesDatatables.php"); ?>
+    
 
     <!-- Script para el sidebar -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
