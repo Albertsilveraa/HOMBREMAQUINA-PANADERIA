@@ -21,32 +21,29 @@
         <span class="site-imag"><img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/97/7762432097_b09238fc-346a-4194-832f-663753e6878e.png?cb=1662436924" height="250" width="300"></span>
 
         
-    <table align="center">
-        <tr>
-            <th>
-                <form action="ingresoadmin.php" name="" method="POST">
-                    <fieldset>
-                        <p>User Admin:
-                            <input type="text" name="txtUsu" style="align-self: middle" required>
-                        </p>
+        <table align="center">
+    <tr>
+        <th>
+            <form action="ingresoadmin.php" method="POST">
+                <p>User Admin:
+                    <input type="text" name="txtUsu" required>
+                </p>
 
-                        <p>Contraseña:
-                            <input type="password" name="txtCon" style="align-self: middle" required>
-                        </p>
+                <p>Contraseña:
+                    <input type="password" name="txtCon" required>
+                </p>
 
-                        <p>
-                            <input type="submit" name="btnIng" onclick="registrar()" value="login" style="border-color: green">
-                        </p>
+                <p>
+                    <input type="submit" name="btnIng" value="Iniciar sesión">
+                </p>
+            </form>
+        </th>
 
-                    </fieldset>
-                </form>
-            </th>
-
-            <th>
-                <img src="Imagenes/imagen_administrador.png" width="150" height="150">
-            </th>
-        </tr>
-    </table>
+        <th>
+            <img src="Imagenes/imagen_administrador.png" width="150" height="150">
+        </th>
+    </tr>
+</table>
 
 
     <br><br><br>
