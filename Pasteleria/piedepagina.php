@@ -23,7 +23,7 @@
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Terminos</a></li>
                             <li><a href="#">Política y Privacidad</a></li>
-                            <li><a href="reseñas.php">Reseña</a></li>
+                            <li><a href="reseñas.php">Reseñas</a></li>
                         </ul>
                     </div>
                 </div>
