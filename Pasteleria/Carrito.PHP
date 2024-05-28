@@ -56,7 +56,7 @@
     <?php include 'encabezado.php'; ?>
 
     <div class="site-img">
-        <img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/97/7762432097_b09238fc-346a-4194-832f-663753e6878e.png?cb=1662436924" height="250" width="300">
+        <img src="Imagenes/Crumble&Flake.png" height="400" width="400">
     </div>
 
     <section class="section">
