@@ -6,6 +6,7 @@
         <link rel="icon" type="Imagenes/png" href="Imagenes/Logo_Empresa.png">
         <link rel="stylesheet" type="text/css" href="CSS3/compras.css">
         <link rel="stylesheet" type="text/css" href="CSS3/footer.css">
+        <script src="https://www.paypal.com/sdk/js?client-id=AfXFbLF2od_t255cJD01PbkecchLAAaQbTwTeHCk8qsZ83vHufaQXxO3EYholg1O2WAavSCu1-K649EN&components=buttons"></script>
         
     </head>
     
@@ -18,36 +19,7 @@
 
         
 
-      const productos = [{
-                id: 1,
-                nombre: "Tarta de Chocolate",
-                precio: 7.5,
-                codigo: 5,
-                subtotal:hallarSubTotal(7.5,5),              
-            },
-
-            {
-                id: 2,
-                nombre: "Pastel de Arándanos",
-                precio: 7.5,
-                codigo: 4,
-                subtotal: hallarSubTotal(7.5,4),
-            },
-            {
-                id: 3,
-                nombre: "Tarta de Bayas",
-                precio: 7.5,
-                codigo: 3,
-                subtotal: hallarSubTotal(7.5,3),
-            },
-            {
-                id: 4,
-                nombre: "Pie de Manzana",
-                precio: 7.5,
-                codigo: 2,
-                subtotal: hallarSubTotal(7.5,2),
-            },
-            ];
+      
                     
        
     </script>
@@ -96,9 +68,20 @@
                 </tbody>
                 
             </table>
+            <tr>
+                <td>
+                    Total: 
+                </td>
+                <td>
+                <div id="TOTAL"></div>
+                    
+                </td>
+            </tr>
                 <tr colspan="5">
-                    <td ><a href="Comprar.PHP"><button onclick="hallarSubTotal()" id="boton-comprar" class="btn btn-danger" >Añadir</button></a></td>
-                    <td ><button onclick="hallarSubTotal()" id="boton-comprar" class="btn btn-danger" >Comprar</button></td>
+                    <br>
+                    <br>
+                <div id="paypal-button-container" style="max-width:500px;"></div>
+                
                 </tr>
                 </center>
         </div>
@@ -124,15 +107,20 @@
 
 </script>
     <script>
+        const productos = JSON.parse(sessionStorage.getItem('shoppingCart')) || {};
         // Ahora dibujamos la tabla
         const $cuerpoTabla = document.querySelector("#cuerpoTabla");
+        var total = 0;
+        var cantotal = 0;
+        var depurar;
     // Recorrer todos los productos
-        productos.forEach(producto => {
+    Object.keys(productos).forEach(productokey => {
+        const producto = productos[productokey];
             // Crear un <tr>
             const $tr = document.createElement("tr");
             // Creamos el <td> de nombre y lo adjuntamos a tr
             let $tdNombre = document.createElement("td");
-            $tdNombre.textContent = producto.nombre; // el textContent del td es el nombre
+            $tdNombre.textContent = productokey; // el textContent del td es el nombre
             $tr.appendChild($tdNombre);
             // El td de precio
             let $tdPrecio = document.createElement("td");
@@ -140,16 +128,22 @@
             $tr.appendChild($tdPrecio);
             // El td del código
             let $tdCodigo = document.createElement("td");
-            $tdCodigo.textContent = producto.codigo;
+            $tdCodigo.textContent = producto.cantidad;
             $tr.appendChild($tdCodigo);
              // El td del subtotal
             let $tdSub = document.createElement("td");
-            $tdSub.textContent = producto.subtotal;
+            $tdSub.textContent = producto.precioTotal;
             $tr.appendChild($tdSub);
             // Finalmente agregamos el <tr> al cuerpo de la tabla
             $cuerpoTabla.appendChild($tr);
             // Y el ciclo se repite hasta que se termina de recorrer todo el arreglo
+            total = total + producto.precioTotal;
+            cantotal = cantotal + producto.cantidad;
         });
+        const myDiv = document.getElementById('TOTAL');
+
+        // Set the text content of the div
+        myDiv.textContent = total;
     </script>
     
     <script type="text/javascript">
@@ -157,7 +151,68 @@
             return cantidad*precio;
         }
     </script>
-    
+<script>
+
+function initPayPalButton() {
+   paypal.Buttons({
+     style: {
+       shape: 'rect',
+       color: 'gold',
+       layout: 'vertical',
+       label: 'pay',
+       
+     },
+
+     createOrder: function(data, actions) {
+       return actions.order.create({
+         purchase_units: [{"description":"CrumbleFlake","amount":{"currency_code":"USD","value":total}}]
+       });
+     },
+
+     onApprove: function(data, actions) {
+     
+         actions.order.capture().then(function(details) {
+         console.log(details);
+         let shoppingCart = sessionStorage.getItem('shoppingCart');
+         sessionStorage.removeItem('shoppingCart'); 
+         let datos_compra = [{"precio": total,"cantidad": cantotal,"tipo":"usuario registrado"}];
+         
+        
+         return fetch ('registrarcompra.php',{
+             method: 'post',
+             headers: {
+                 "Content-Type": "application/json"
+             },
+             body: JSON.stringify (datos_compra)
+         }).then(response => {
+            if (response.ok) {
+                
+                actions.redirect('http://localhost/HOMBREMAQUINA-PANADERIA/Pasteleria/AgradecimientoCompra.php');
+            } else {
+                
+                console.error('Fetch error: ', response.statusText);
+            }
+        })
+         
+        
+         
+
+
+         
+     
+         
+       });
+     },
+
+     onError: function(err) {
+       console.log(err);
+     }
+   }).render('#paypal-button-container');
+ }
+ if ( myDiv.textContent != '0'){
+    initPayPalButton() 
+ }
+</script>
     
     
 </html>	

@@ -20,50 +20,71 @@
                 const pedirCarritoButton = document.getElementById('pedir-carrito');
                 const carritoContainer = document.getElementById('carrito-container');
                 const precioFinal = document.getElementById('precio-final');
-        
-                const productosEnCarrito = {};
+                
+                productosEnCarrito = {};//cambio de const se usara como el carrito
                 let totalCarrito = 0;
-        
+                // esta function crea una variables de session del carrito
+                function initializeCart() {
+                if (!sessionStorage.getItem('shoppingCart')) {
+                sessionStorage.setItem('shoppingCart', JSON.stringify([]));
+                    }
+                else{
+                    productosEnCarrito = JSON.parse(sessionStorage.getItem('shoppingCart')) || {};
+                }
+                
+                }
+
                 addButtons.forEach(button => {
                     button.addEventListener('click', () => {
                         console.log('Botón clickeado');
                         const item = button.parentElement.parentElement;
                         const itemTitle = item.querySelector('.card__info h2').textContent;
                         const itemPrice = parseFloat(item.querySelector('.card__price').textContent.replace('S/. ', ''));
+                        initializeCart()//se crea carrito vacio
         
                         if (productosEnCarrito[itemTitle]) {
                             productosEnCarrito[itemTitle].cantidad++;
+                            productosEnCarrito[itemTitle].precio = itemPrice;
                             productosEnCarrito[itemTitle].precioTotal += itemPrice;
+                            if(carrito.querySelector(`[data-title="${itemTitle}"]`)){
                             const productoEnCarrito = carrito.querySelector(`[data-title="${itemTitle}"]`);
                             productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
                             productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
+                            }
+                            else {
+                                //mostrar todo el carrito
+                                Object.keys(productosEnCarrito).forEach(itemTitle => {
+                                addDivproduct(itemTitle);
+                                
+                            })
+                            }
+                            
                         } else {
                             productosEnCarrito[itemTitle] = {
                                 cantidad: 1,
-                                precioTotal: itemPrice
+                                precioTotal: itemPrice,
+                                precio: itemPrice
                             };
-        
-                            const newItem = document.createElement('div');
-                            newItem.innerHTML = `
-                                <p>${itemTitle} - 
-                                    <button class="incrementar">+</button>
-                                    <span class="cantidad">1</span>
-                                    <button class="decrementar">-</button>
-                                    - <span class="precio-total">S/. ${itemPrice.toFixed(2)}</span>
-                                </p>
-                            `;
-                            newItem.setAttribute('data-title', itemTitle);
-                            carrito.appendChild(newItem);
+                            
+                            if (carritoContainer.classList.contains('habilitado')){
+                                addDivproduct(itemTitle);
+                            }
+                            else{
+                                Object.keys(productosEnCarrito).forEach(itemTitle => {
+                                addDivproduct(itemTitle);
+                            })
+                            }
                             
                             
-                            gestionarBotones();
                         }
-        
+                        
+                        sessionStorage.setItem('shoppingCart', JSON.stringify(productosEnCarrito));
                         carritoContainer.classList.add('habilitado');
                         calcularPrecioTotal();
+                        handlebuttons();
                     });
                 });
-        
+                
                 vaciarCarritoButton.addEventListener('click', () => {
                     carrito.innerHTML = '';
                     for (let producto in productosEnCarrito) {
@@ -71,6 +92,7 @@
                     }
                     totalCarrito = 0;
                     precioFinal.textContent = `Precio Final: S/. 0.00`;
+                    sessionStorage.setItem('shoppingCart', JSON.stringify(productosEnCarrito));
                 });
 
                 pedirCarritoButton.addEventListener('click', () => {
@@ -81,6 +103,7 @@
                     }
                     totalCarrito = 0;
                     precioFinal.textContent = `Precio Final: S/. 0.00`;
+                    window.location.href = 'Carrito.PHP';
                 });
         
                 function calcularPrecioTotal() {
@@ -91,37 +114,63 @@
                     precioFinal.textContent = `Precio Final: S/. ${totalCarrito.toFixed(2)}`;
                 }
         
-                function gestionarBotones() {
-                    const incrementButtons = document.querySelectorAll('.incrementar');
-                    const decrementButtons = document.querySelectorAll('.decrementar');
-        
-                    incrementButtons.forEach(button => {
-                        button.addEventListener('click', () => {
-                            const productoEnCarrito = button.parentElement.parentElement;
-                            const itemTitle = productoEnCarrito.getAttribute('data-title');
-                            productosEnCarrito[itemTitle].cantidad++;
-                            productosEnCarrito[itemTitle].precioTotal += productosEnCarrito[itemTitle].precioTotal / (productosEnCarrito[itemTitle].cantidad - 1);
-                            productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
-                            productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
-                            calcularPrecioTotal();
-                        });
-                    });
-        
-                    decrementButtons.forEach(button => {
-                        button.addEventListener('click', () => {
-                            const productoEnCarrito = button.parentElement.parentElement;
-                            const itemTitle = productoEnCarrito.getAttribute('data-title');
-                            if (productosEnCarrito[itemTitle].cantidad > 1) {
-                                productosEnCarrito[itemTitle].cantidad--;
-                                productosEnCarrito[itemTitle].precioTotal -= productosEnCarrito[itemTitle].precioTotal / (productosEnCarrito[itemTitle].cantidad + 1);
-                                productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
-                                productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
-                                calcularPrecioTotal();
-                            }
-                        });
-                    });
+                
+                function addDivproduct(itemTitle){
+                    const newItem = document.createElement('div');
+                            newItem.innerHTML = `
+                                <p>${itemTitle} - 
+                                    <button class="incrementar">+</button>
+                                    <span class="cantidad">${productosEnCarrito[itemTitle].cantidad}</span>
+                                    <button class="decrementar">-</button>
+                                    - <span class="precio-total">S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}</span>
+                                </p>
+                            `;
+                            newItem.setAttribute('data-title', itemTitle);
+                            carrito.appendChild(newItem);
+                            
+                            
+                            
                 }
+                //+ y -
+           
+            function handlebuttons(){
+            const incrementButtons = document.querySelectorAll('.incrementar');
+            const decrementButtons = document.querySelectorAll('.decrementar');
+
+
+            incrementButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const productoEnCarrito = button.parentElement.parentElement;
+                    const itemTitle = productoEnCarrito.getAttribute('data-title');
+                    productosEnCarrito[itemTitle].cantidad += 1;
+                    productosEnCarrito[itemTitle].precioTotal += productosEnCarrito[itemTitle].precioTotal / (productosEnCarrito[itemTitle].cantidad - 1);
+                    productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
+                    productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
+                    calcularPrecioTotal();
+                    sessionStorage.setItem('shoppingCart', JSON.stringify(productosEnCarrito));
+                });
             });
+
+
+            decrementButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const productoEnCarrito = button.parentElement.parentElement;
+                    const itemTitle = productoEnCarrito.getAttribute('data-title');
+                    if (productosEnCarrito[itemTitle].cantidad > 1) {
+                        productosEnCarrito[itemTitle].cantidad--;
+                        productosEnCarrito[itemTitle].precioTotal -= productosEnCarrito[itemTitle].precioTotal / (productosEnCarrito[itemTitle].cantidad + 1);
+                        productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
+                        productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
+                        calcularPrecioTotal();
+                        sessionStorage.setItem('shoppingCart', JSON.stringify(productosEnCarrito));
+                    }
+                });
+            });
+            }
+
+                //
+            });
+            
         </script>
         
         
