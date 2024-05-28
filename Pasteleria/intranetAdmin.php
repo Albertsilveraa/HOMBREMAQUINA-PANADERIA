@@ -1,8 +1,7 @@
 <?php
-
-
 require_once('conexionBD.PHP');
 ?>
+
 <span style="font-family: verdana, geneva, sans-serif;">
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +9,7 @@ require_once('conexionBD.PHP');
   <meta charset="UTF-8" />
   <title>Admin Dashboard | By Code Info</title>
   <link rel="stylesheet" href="CSS3/intranet.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" media="all">
   <!-- Font Awesome Cdn Link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 </head>
@@ -44,19 +44,44 @@ require_once('conexionBD.PHP');
 
     <div class="main-body">
       <h2>Dashboard</h2>
+
       <div class="promo_card">
         <h1>Crumble&Flake</h1>
-        <span>Aqui podras ver los pedidos hechos en la pagina.</span>
-        <a href="index.PHP"><button>Learn More</button></a>
+        <span>¡Bienvenido al Dashboard Administrativo de Crumble&Flake! Este es tu espacio exclusivo diseñado para brindarte una 
+          visión completa y deliciosa de todas las operaciones dentro de nuestra pastelería. Desde aquí, podrás sumergirte en el 
+          mundo dulce de tus productos, clientes y ventas.</span>
+          <br><br>
+        <button onclick="toggleInfo()">Learn More</button>
+        <div class="info-container" id="info">
+          <p>En Crumble&Flake, entendemos que la excelencia en la pastelería es un arte y una ciencia. Este dashboard ha sido creado 
+            con ese espíritu en mente, ofreciéndote herramientas poderosas para gestionar y mejorar cada aspecto de tu negocio. <br><br>Desde
+             el seguimiento en tiempo real de las ventas de tus pasteles más populares hasta la gestión de inventario y el análisis 
+             de tendencias de consumo, aquí encontrarás todo lo que necesitas para tomar decisiones informadas y llevar tu pastelería 
+             al siguiente nivel. <br><br>Como administrador de Crumble&Flake, tu pasión y dedicación son la clave de nuestro éxito. Este dashboard 
+             está diseñado para apoyarte en cada paso del camino, proporcionándote información valiosa y herramientas intuitivas para 
+             ayudarte a prosperar en el mundo de la pastelería. <br><br>Estamos encantados de tenerte aquí y emocionados de acompañarte en este 
+             viaje delicioso. ¡Bienvenido al dulce mundo de Crumble&Flake!</p>
+        </div>
 
 
       </div>
 
+      <script>
+        function toggleInfo() {
+            var info = document.getElementById("info");
+            if (info.style.display === "none") {
+                info.style.display = "block";
+            } else {
+                info.style.display = "none";
+            }
+        }
+    </script>
+
       <div class="history_lists">
         <div class="list1">
           <div class="row">
-            <h4>History</h4>
-            <a href="#">See all</a>
+            <h4>Pedidos</h4>
+            <a href="#">Ver todos</a>
           </div>
           <table>
             <thead>
@@ -89,7 +114,7 @@ require_once('conexionBD.PHP');
         <div class="list2">
           <div class="row">
             <h4>Usuarios</h4>
-            <a href="#">Upload</a>
+            <a href="#">Actualizar</a>
           </div>
           <table>
             <thead>
