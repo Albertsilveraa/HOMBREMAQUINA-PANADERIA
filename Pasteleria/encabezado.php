@@ -16,9 +16,9 @@
 
             <div class="nav_menu">
                 <ul>
-                    <li><a href="index.PHP"><img src="https://getconnected.honeywellhome.com/en/sites/getconnected.honeywell.com.en/files/lyric_to_home.png" height="18" width="18" style="vertical-align: middle;"> Home</a></li>
-                    <li><a href="Comprar.PHP"><img src="https://icones.pro/wp-content/uploads/2021/05/icone-de-panier-noir.png" width="20" height="20" style="vertical-align: middle;"> Comprar</a></li>
-                    <li><a href="Carrito.PHP"><img src="Imagenes/carrito.png" width="40" height="40" style="vertical-align: middle;"> Carrito</a></li>
+                    <li><a href="index.PHP"><img src="https://static.thenounproject.com/png/3574480-200.png" height="25" width="25" style="vertical-align: middle;">Home</a></li>
+                    <li><a href="Comprar.PHP"><img src="https://cdn-icons-png.flaticon.com/512/25/25619.png" width="18" height="18" style="vertical-align: middle;"> Comprar</a></li>
+                    <li><a href="Carrito.PHP"><img src="https://images.vexels.com/media/users/3/200097/isolated/preview/942820836246f08c2d6be20a45a84139-icono-de-carrito-de-compras-carrito-de-compras.png" width="25" height="25" style="vertical-align: middle;"> Carrito</a></li>
                     <li><a href="eleccion_sesion.PHP"><button class="nav--button" href="#">Iniciar sesión</button></a></li>
                 </ul>
             </div>

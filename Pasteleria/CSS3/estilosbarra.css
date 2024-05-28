@@ -1,6 +1,11 @@
 
 /*-- REDES SOCIALES --*/
-    
+
+*{
+    font-family: Urbanist, sans-serif;
+}
+
+
 .social {
     position: fixed;
     left: 0;

@@ -194,13 +194,6 @@ function initPayPalButton() {
             }
         })
          
-        
-         
-
-
-         
-     
-         
        });
      },
 

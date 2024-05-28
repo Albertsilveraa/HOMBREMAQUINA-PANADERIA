@@ -1,6 +1,11 @@
 
 /*BACKGROUND COMPRAS*/
 
+*{
+    font-family: Urbanist, sans-serif;
+}
+
+
 body {
     user-select: none;
 }

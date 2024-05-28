@@ -1,6 +1,11 @@
 
 /*BACKGROUND FOOTER*/
 
+*{
+  font-family: Urbanist, sans-serif;
+}
+
+
 ul {
     margin: 0px;
     padding: 0px;
