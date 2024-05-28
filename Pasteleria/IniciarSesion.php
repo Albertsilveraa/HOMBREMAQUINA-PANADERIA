@@ -14,7 +14,7 @@ if(isset($_POST['submit'])) {
 
     if ($result->num_rows > 0) {
         
-        echo "Inicio de sesión exitoso";
+        header("Location: intranetAdmin.php");
         
     } else {
        
