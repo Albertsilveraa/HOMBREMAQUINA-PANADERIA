@@ -18,12 +18,12 @@
 
                 <div class="nav_menu">
                     <ul >
-                        <li><a href="index.html"><img src="https://getconnected.honeywellhome.com/en/sites/getconnected.honeywell.com.en/files/lyric_to_home.png" height="18" width="18" style="vertical-align: middle;"> Home</a></li>
+                        <li><a href="index.PHP"><img src="https://getconnected.honeywellhome.com/en/sites/getconnected.honeywell.com.en/files/lyric_to_home.png" height="18" width="18" style="vertical-align: middle;"> Home</a></li>
 
-                        <li><a href="Comprar.html"><img src="https://icones.pro/wp-content/uploads/2021/05/icone-de-panier-noir.png" width="20" height="20" style="vertical-align: middle;"> Comprar</a></li>
+                        <li><a href="Comprar.PHP"><img src="https://icones.pro/wp-content/uploads/2021/05/icone-de-panier-noir.png" width="20" height="20" style="vertical-align: middle;"> Comprar</a></li>
 
-                        <li><a href="Carrito.html"><img src="Imagenes/carrito.png" width="40" height="40" style="vertical-align: middle;"> Carrito</a></li>
-                        <li><a href="eleccion_sesion.html"><button class="nav--button" href="#">Iniciar sesión</button></a></li>
+                        <li><a href="Carrito.PHP"><img src="Imagenes/carrito.png" width="40" height="40" style="vertical-align: middle;"> Carrito</a></li>
+                        <li><a href="eleccion_sesion.PHP"><button class="nav--button" href="#">Iniciar sesión</button></a></li>
 
 
                     </ul>
