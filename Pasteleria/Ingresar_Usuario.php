@@ -25,16 +25,16 @@
                     <div>
 
                         <h1 class="titulo">Iniciar Sesion</h1>
-                        <form class="formulario" >
+                        <form class="formulario" action="IniciarSesion.php" method="post" onsubmit="return validarFormulario()">
 
-                            <div>
-                                <input type="text" name="usuario" placeholder="Usuario">
-                            </div>
-
-                            <div>
-                                <input type="password" name="password" placeholder="Contraseña"><br><br>
-                                <button type="button">Iniciar Sesion</button>
-                            </div>
+    <div>
+        <input type="text" name="usuario" placeholder="Usuario">
+    </div>
+    <div>
+        <input type="password" name="password" placeholder="Contraseña"><br><br>
+        <button type="submit" name="submit">Iniciar Sesión</button>
+    </div>
+</form>
                         </form>
 
                         <p>
@@ -60,6 +60,37 @@
     <?php
     include 'piedepagina.php';
     ?>
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    function validarFormulario() {
+        var usuario = document.querySelector('input[name="usuario"]').value;
+        var password = document.querySelector('input[name="password"]').value;
+
+        // Validar que los campos no estén en blanco
+        if (usuario.trim() === '' || password.trim() === '') {
+            alert('Por favor, complete todos los campos.');
+            return false;   
+        }
+
+        // Validar el formato del correo electrónico
+        
+
+        return true;
+    }
+
+    // Asignar la función de validación al evento onSubmit del formulario
+    var formulario = document.querySelector('.formulario');
+    formulario.addEventListener('submit', function(event) {
+        if (!validarFormulario()) {
+            event.preventDefault(); // Evitar que el formulario se envíe si la validación falla
+        }
+    });
+});
+</script>
+
+
+
+
 
 </body>
 
