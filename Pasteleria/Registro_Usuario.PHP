@@ -1,3 +1,8 @@
+<?php
+
+
+require_once('conexionBD.PHP');
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,24 +28,24 @@
             <tr>
                 <th>
 
-                    <div>	
-                        <form class="formulario">
-                            <fieldset>
-
-                                <div class="form-group">
-                                    <input type="text" name="usuario" placeholder="Usuario">
-                                </div>
-
-                                <div>
-                                    <input type="password" name="password" placeholder="Contraseña">
-                                </div>
-
-                                <div class="form-group">
-
-                                    <input type="password" name="password2" placeholder="Confirmar Contraseña">
-                                    <br><br>
-                                    <button type="button">Registrate</button>
-                                </div>
+                <form class="formulario" action="Procesarregistro.php" method="post">
+    <fieldset>
+        <div class="form-group">
+            <input type="text" name="Nombre" placeholder="Nombre">
+        </div>
+        <div>
+            <input type="text" name="apellido" placeholder="Apellido">
+        </div>
+        <div>
+            <input type="text" name="Correo" placeholder="example@gmail.com">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password2" placeholder=" Contraseña">
+            <br><br>
+            <button type="submit" name="submit">Registrate</button>
+        </div>
+    </fieldset>
+</form>
                         </form>
 
                         <p>
