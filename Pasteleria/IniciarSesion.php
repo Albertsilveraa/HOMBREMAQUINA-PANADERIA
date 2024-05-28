@@ -20,7 +20,5 @@ if(isset($_POST['submit'])) {
        
         echo "Usuario o contraseña incorrectos";
     }
-
-   
 }
 ?>

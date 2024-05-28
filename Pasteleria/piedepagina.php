@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6 text-center text-lg-left">
                     <div class="copyright-text">
-                        <p>Copyright &copy; 2022, All Right Reserved <a href="index.php">Crumble&Flake</a></p>
+                        <p>Copyright &copy; 2024, All Right Reserved <a href="index.php">Crumble&Flake</a></p>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
@@ -22,7 +22,7 @@
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Terminos</a></li>
-                            <li><a href="#">Política y Privacidad</a></li>
+                            <li><a href="Politicas.php">Política y Privacidad</a></li>
                             <li><a href="reseñas.php">Reseñas</a></li>
                         </ul>
                     </div>
