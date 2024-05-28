@@ -1,0 +1,193 @@
+
+/*BACKGROUND COMPRAS*/
+
+body {
+    user-select: none;
+}
+
+h2,h3,p {
+    margin: 0;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/*CANTIDAD DE ELEMENTOS POR LINEA*/
+
+.grid {
+    display: grid;
+    grid-template: 1fr / repeat(5, 1fr);
+    grid-gap: 100px;
+}
+
+.card {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.card__image {
+    position: absolute;
+    max-width: 140%;
+    left: -22%;
+    right: 0;
+    margin: 0 auto;
+    top: -9%;
+    z-index: 2;
+    transition: all 0.3s ease-out;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+.card__data {
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #ededed;
+    padding-top: calc(100% * 1.18);
+    transition: all 0.3s ease-out 0.1s;
+}
+
+.card__info {
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.card__info h2 {
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 35px;
+}
+
+.card__info p {
+    font-size: 12px;
+    line-height: 15px;
+    color: #a2a2a2;
+}
+
+.card_lista{
+    padding: 0 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #a2a2a2;
+}
+
+
+.card__action {
+    display: grid;
+    grid-template: 30px / 1fr 35px;
+}
+
+.card__price {
+    height: 30px;
+    padding: 0 10px 0 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+}
+
+.card__add {
+    overflow: hidden;
+    width: 35px;
+    height: 30px;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #222222;
+    border: none;
+    color: #fff;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease-in;
+}
+
+
+/*ANIMACION DE SELECCION*/
+
+.card__add:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.card__add:active {
+    opacity: 1;
+    transform: scale(0.8);
+}
+
+.card:hover .card__image {
+    top: -20%;
+}
+
+.card:hover .card__data {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+#carrito-container {
+    display: none; 
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    background-image: linear-gradient(to right, #f3ea98 0%, #c76f0a 0%, #57c6e1 0%, #fff7ad 0%, #e4b228 100%);
+    padding: 20px;
+    border: 2px solid #ccc;
+    z-index: 1000;
+    animation: slideIn 0.3s ease forwards;
+    box-shadow: 14px 14px 20px 0 rgba(20, 20, 20, 0.3); 
+}
+
+#carrito-container.habilitado {
+    display: block; 
+}
+
+#carrito-container h2 {
+    margin-top: 0;
+    font-weight: 700;
+    font-family: cursive;
+}
+
+#carrito {
+    font-family: cursive;
+}
+
+#carrito-container button {
+    margin-top: 10px;
+    position: relative;
+    border: none;
+    height: 30px;
+    width: 120px;
+    font-size: 13px;
+    transition: .3s linear;
+    cursor: pointer;
+}
+
+#carrito-container button:hover {
+    background-color: #2ed0f8;
+    box-shadow: 0 0 5px #2ed0f8, 0 0 5px #2ed0f8, 0 0 50px #2ed0f8, 0 0 100px #2ed0f8, 0 0 300px #2ed0f8;
+}
+
+#precio-final {
+    font-family: cursive;
+}
+

@@ -1,0 +1,31 @@
+
+/*-- REDES SOCIALES --*/
+    
+.social {
+    position: fixed;
+    left: 0;
+    top: 200px;
+    z-index: 2000;
+}
+
+.social ul {
+    list-style: none;
+}
+
+.social ul li a {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    color: #ae181f;
+    background: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    -webkit-transition:all 900ms ease;
+    -o-transition:all 900ms ease;
+    transition:all 900ms ease;
+}
+
+.social ul li a:hover {
+    background:#e2e2e2;
+    padding: 10px 30px;
+}

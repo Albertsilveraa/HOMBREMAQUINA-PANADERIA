@@ -1,0 +1,356 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Comprar</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="CSS3/estiloscabezera.css">
+        <link rel="icon" type="Imagenes/png" href="Imagenes/Logo_Empresa.png">
+        <link rel="stylesheet" type="text/css" href="CSS3/compras.css">
+        <link rel="stylesheet" type="text/css" href="CSS3/footer.css">
+        
+         <!-- este es el script del carrito  de compras-->
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const addButtons = document.querySelectorAll('.card__add');
+                const carrito = document.getElementById('carrito');
+                const vaciarCarritoButton = document.getElementById('vaciar-carrito');
+                const pedirCarritoButton = document.getElementById('pedir-carrito');
+                const carritoContainer = document.getElementById('carrito-container');
+                const precioFinal = document.getElementById('precio-final');
+        
+                const productosEnCarrito = {};
+                let totalCarrito = 0;
+        
+                addButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        console.log('Botón clickeado');
+                        const item = button.parentElement.parentElement;
+                        const itemTitle = item.querySelector('.card__info h2').textContent;
+                        const itemPrice = parseFloat(item.querySelector('.card__price').textContent.replace('S/. ', ''));
+        
+                        if (productosEnCarrito[itemTitle]) {
+                            productosEnCarrito[itemTitle].cantidad++;
+                            productosEnCarrito[itemTitle].precioTotal += itemPrice;
+                            const productoEnCarrito = carrito.querySelector(`[data-title="${itemTitle}"]`);
+                            productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
+                            productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
+                        } else {
+                            productosEnCarrito[itemTitle] = {
+                                cantidad: 1,
+                                precioTotal: itemPrice
+                            };
+        
+                            const newItem = document.createElement('div');
+                            newItem.innerHTML = `
+                                <p>${itemTitle} - 
+                                    <button class="incrementar">+</button>
+                                    <span class="cantidad">1</span>
+                                    <button class="decrementar">-</button>
+                                    - <span class="precio-total">S/. ${itemPrice.toFixed(2)}</span>
+                                </p>
+                            `;
+                            newItem.setAttribute('data-title', itemTitle);
+                            carrito.appendChild(newItem);
+                            
+                            
+                            gestionarBotones();
+                        }
+        
+                        carritoContainer.classList.add('habilitado');
+                        calcularPrecioTotal();
+                    });
+                });
+        
+                vaciarCarritoButton.addEventListener('click', () => {
+                    carrito.innerHTML = '';
+                    for (let producto in productosEnCarrito) {
+                        delete productosEnCarrito[producto];
+                    }
+                    totalCarrito = 0;
+                    precioFinal.textContent = `Precio Final: S/. 0.00`;
+                });
+
+                pedirCarritoButton.addEventListener('click', () => {
+                    carrito.innerHTML = '';
+                    carritoContainer.classList.remove('habilitado');
+                    for (let producto in productosEnCarrito) {
+                        delete productosEnCarrito[producto];
+                    }
+                    totalCarrito = 0;
+                    precioFinal.textContent = `Precio Final: S/. 0.00`;
+                });
+        
+                function calcularPrecioTotal() {
+                    totalCarrito = 0;
+                    for (let producto in productosEnCarrito) {
+                        totalCarrito += productosEnCarrito[producto].precioTotal;
+                    }
+                    precioFinal.textContent = `Precio Final: S/. ${totalCarrito.toFixed(2)}`;
+                }
+        
+                function gestionarBotones() {
+                    const incrementButtons = document.querySelectorAll('.incrementar');
+                    const decrementButtons = document.querySelectorAll('.decrementar');
+        
+                    incrementButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const productoEnCarrito = button.parentElement.parentElement;
+                            const itemTitle = productoEnCarrito.getAttribute('data-title');
+                            productosEnCarrito[itemTitle].cantidad++;
+                            productosEnCarrito[itemTitle].precioTotal += productosEnCarrito[itemTitle].precioTotal / (productosEnCarrito[itemTitle].cantidad - 1);
+                            productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
+                            productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
+                            calcularPrecioTotal();
+                        });
+                    });
+        
+                    decrementButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const productoEnCarrito = button.parentElement.parentElement;
+                            const itemTitle = productoEnCarrito.getAttribute('data-title');
+                            if (productosEnCarrito[itemTitle].cantidad > 1) {
+                                productosEnCarrito[itemTitle].cantidad--;
+                                productosEnCarrito[itemTitle].precioTotal -= productosEnCarrito[itemTitle].precioTotal / (productosEnCarrito[itemTitle].cantidad + 1);
+                                productoEnCarrito.querySelector('.cantidad').textContent = productosEnCarrito[itemTitle].cantidad;
+                                productoEnCarrito.querySelector('.precio-total').textContent = `S/. ${productosEnCarrito[itemTitle].precioTotal.toFixed(2)}`;
+                                calcularPrecioTotal();
+                            }
+                        });
+                    });
+                }
+            });
+        </script>
+        
+        
+        
+        
+        
+        
+    </head>
+    <body>
+        
+        <nav class="main-header">
+            <container>
+                <div id= "logo-header">
+                    <span class="site-name">Crumble&Flake.com</span>
+                    <span class="site-desc">Pasteles / Postres / Bocaditos</span>
+                </div>
+
+                <div class="nav_menu">
+                    <ul>
+                        <li><a href="index.html"><img src="https://getconnected.honeywellhome.com/en/sites/getconnected.honeywell.com.en/files/lyric_to_home.png" height="18" width="18" style="vertical-align: middle;"> Home</a></li>
+
+                        <li><a href="Comprar.html"><img src="https://icones.pro/wp-content/uploads/2021/05/icone-de-panier-noir.png" width="20" height="20" style="vertical-align: middle;"> Comprar</a></li>
+
+                        <li><a href="Carrito.html"><img src="Imagenes/carrito.png" width="40" height="40" style="vertical-align: middle;"> Carrito</a></li>
+                        <li><a href="eleccion_sesion.html"><button class="nav--button" href="#">Iniciar sesión</button></a></li>
+                    </ul>
+                </div>
+            </container>
+        </nav>
+
+        <span class="site-imag"><img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/97/7762432097_b09238fc-346a-4194-832f-663753e6878e.png?cb=1662436924" height="250" width="300"></span>
+
+        <!-- INTRODUCCION --> 
+
+        <marquee>
+            <h1 style="color: red; font-family: Arial;"></h1>
+        </marquee>
+
+        <section class="section">
+            <div class="container">
+                <div class="grid">
+                    <!-- Aquí van tus artículos -->
+                    <article class="card">
+                        <img class="card__image" src="Imagenes/Destacados/Tarta_de_chocolate.jpg" height="190" width="250" />
+                        <div class="card__data">
+                            <div class="card__info">
+                                <h2>Tarta de Chocolate</h2>
+
+                                <p>Tarta chocolate, cubierta de hojas de menta</p>
+                                <br>
+
+                                <p>Ingredientes:<p>
+                                <ul class = "card_lista">
+                                    <li tipe="square">Mantequilla</li>
+                                    <li tipe="square">Chocolate Negro</li>
+                                    <li tipe="square">Leche</li>
+                                    <li tipe="square">Cuajada</li>
+                                    <li tipe="square">Azúcar</li>
+                                    <li tipe="square">Chocolate Blanco</li>
+                                    <li tipe="square">Hojas de Menta</li>
+
+
+                                </ul>
+                            </div>
+                            <h3 class="card__price">S/. 7.50</h3>
+                            <button class="card__add">+</button>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img class="card__image" src="Imagenes/Destacados/Blueberries.jpg" height="190" width="250"/>
+                        <div class="card__data">
+                            <div class="card__info">
+                                <h2>Pastel de Arándanos </h2>
+                                <p>Pastel de arándanos frescos, con vainilla</p>
+                                <br>
+
+                                <p>Ingredientes:<p>
+                                <ul class = "card_lista">
+                                    <li tipe="square">Azúcar Refinada</li>
+                                    <li tipe="square">Mantequilla</li>
+                                    <li tipe="square">Huevos</li>
+                                    <li tipe="square">Leche</li>
+                                    <li tipe="square">Arádanos Frescos</li>
+                                    <li tipe="square">Harina</li>
+                                    <li tipe="square">Vainilla</li>
+
+
+                                </ul>
+                            </div>
+                            <h3 class="card__price">S/. 7.50</h3>
+                            <button class="card__add">+</button>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img class="card__image" src="Imagenes/Destacados/Bayas.jpg" />
+                        <div class="card__data">
+                            <div class="card__info">
+                                <h2>Tarta de Bayas</h2>
+
+                                <p>Tarta mantequillada, cubierta de bayas silvestres</p>
+                                <br>
+                                <p>Ingredientes:<p>
+                                <ul class = "card_lista">
+                                    <li tipe="square">Harina</li>
+                                    <li tipe="square">Cream Cheese</li>
+                                    <li tipe="square">Mantequilla</li>
+                                    <li tipe="square">Bayas Frescas</li>
+                                    <li tipe="square">Azúcar</li>
+                                    <li tipe="square">Tapicoa</li>
+                                    <li tipe="square">Canela en polvo</li>
+
+                                </ul>
+
+                            </div>
+                            <h3 class="card__price">S/. 7.50</h3>
+                            <button class="card__add">+</button>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img class="card__image" src="Imagenes/Pie_manzana.jpg" height="190" width="250"/>
+                        <div class="card__data">
+                            <div class="card__info">
+                                <h2>Pie de Manzana</h2>
+                                <p>Exquisito Pie de manzana, horneado a punto medio</p>
+                                <br>
+
+                                <p>Ingredientes:<p>
+                                <ul class = "card_lista">
+                                    <li tipe="square">Manzanas Rojas</li>
+                                    <li tipe="square">Harina</li>
+                                    <li tipe="square">Mantequilla</li>
+                                    <li tipe="square">Limón</li>
+                                    <li tipe="square">Azúcar</li>
+                                    <li tipe="square">Huevos</li>
+                                    <li tipe="square">Canela en polvo</li>
+
+                                </ul>
+
+                            </div>
+                            <h3 class="card__price">S/. 7.50</h3>
+                            <button class="card__add">+</button>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img class="card__image" src="Imagenes/Postre_gelatina.jpg" height="190" width="250"/>
+                        <div class="card__data">
+                            <div class="card__info">
+                                <h2>Postre de Gelatina</h2>
+                                <p>Dulce postre de frutas, hecha gelatina</p>
+                                <br>
+
+                                <p>Ingredientes:<p>
+                                <ul class = "card_lista">
+                                    <li tipe="square">Leche</li>
+                                    <li tipe="square">Gelatina en polvo</li>
+                                    <li tipe="square">Fresas</li>
+                                    <li tipe="square">Vainilla</li>
+                                    <li tipe="square">Piña</li>
+                                    <li tipe="square">Gluten</li>
+                                    <li tipe="square">Canela en polvo</li>
+
+                                </ul>
+                            </div>
+                            <h3 class="card__price">S/. 7.50</h3>
+                            <button class="card__add">+</button>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img class="card__image" src="https://i.ibb.co/RT0bjJq/food1.png" />
+                        <div class="card__data">
+                            <div class="card__info">
+                                <h2>Nombre Comida</h2>
+                                <p>Descripcion de la comida, con ingredientes</p>
+                            </div>
+                            <h3 class="card__price">S/. 7.50</h3>
+                            <button class="card__add">+</button>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img class="card__image" src="https://i.ibb.co/JpwBtYk/food2.png" />
+                        <div class="card__data">
+                            <div class="card__info">
+                                <h2>Nombre Comida</h2>
+                                <p>Descripcion de la comida, con ingredientes</p>
+                            </div>
+                            <h3 class="card__price">S/. 7.50</h3>
+                            <button class="card__add">+</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <div id="carrito-container">
+            <h2>Carrito de Compras</h2><br>
+            <div id="carrito"></div><br>
+            <button class="btn" id="vaciar-carrito">Vaciar Carrito</button><br>
+            <button class="btn" id="pedir-carrito">Pedir Carrito</button><br><br>
+            <p id="precio-final">Precio Final: S/. 0.00</p>
+        </div>
+        
+        <footer class="footer-section">
+            <div class="copyright-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                            <div class="copyright-text">
+                                <p>Copyright &copy; 2022, All Right Reserved <a href="index.html">Crumble&Flake</a></p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Terminos</a></li>
+                                    <li><a href="#">Privacidad</a></li>
+                                    <li><a href="#">Política</a></li>
+                                    <li><a href="#">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+    </html>
