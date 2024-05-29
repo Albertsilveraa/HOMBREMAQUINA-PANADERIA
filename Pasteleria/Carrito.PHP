@@ -119,7 +119,8 @@
         });
 
         document.getElementById('TOTAL').textContent = total;
-
+        //sb-barr527794630@personal.example.com
+        //}"+c1EYM
         function initPayPalButton() {
             paypal.Buttons({
                 style: {
@@ -148,7 +149,7 @@
                             body: JSON.stringify(datos_compra)
                         }).then(response => {
                             if (response.ok) {
-                                actions.redirect('http://localhost/HOMBREMAQUINA-PANADERIA/Pasteleria/AgradecimientoCompra.php');
+                                actions.redirect('http://localhost/HOMBREMAQUINA-PANADERIA-main/Pasteleria/AgradecimientoCompra.php');
                             } else {
                                 console.error('Fetch error: ', response.statusText);
                             }

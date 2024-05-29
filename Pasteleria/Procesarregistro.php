@@ -16,7 +16,8 @@ if(isset($_POST['submit'])) {
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
-        echo "Se ha registrado satisfactoriamente";
+        
+        header("Location:Ingresar_Usuario.php");
     } else {
         echo "Error al insertar el registro: " . $conn->error;
     }
