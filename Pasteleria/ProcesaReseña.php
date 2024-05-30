@@ -20,4 +20,5 @@ if(isset($_POST['submit'])) {
         echo "Error al insertar el registro: " . $conn->error;
     }
 }
+
 ?>

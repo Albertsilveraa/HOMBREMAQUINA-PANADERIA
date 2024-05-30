@@ -122,6 +122,7 @@
             margin: 5px auto;
             width: fit-content;
         }
+
     </style>
 
 </head>
