@@ -34,7 +34,7 @@
 
         .review-form,
         .map {
-            width: 300px;
+            width: 500px;
             margin: 10px;
         }
 
@@ -102,12 +102,12 @@
 
         .map iframe {
             width: 100%;
-            height: 435px;
+            height: 200px;
             border-radius: 4px;
         }
 
         .dynamic-title {
-            font-size: 50px;
+            font-size: 35px;
             font-weight: bold;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -140,6 +140,7 @@
             2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549015337cacbbd5%3A0x8e5491597d62f801!2sCrumble%20%26%20Flake%20P%C3%A2tisserie!5e0!3m2!1ses-419!2
                 spe!4v1716875533842!5m2!1ses-419!2spe" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!3m2!1ses-419!2spe!4v1719966711063!5m2!1ses-419!2spe!6m8!1m7!1sQ3E0BRV9tDGSaQy-F3M_DA!2m2!1d47.61771739451583!2d-122.3264225432706!3f158.46110896619592!4f2.65409841008308!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <div class="review-form">
