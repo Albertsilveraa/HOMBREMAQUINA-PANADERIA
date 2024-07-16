@@ -189,7 +189,7 @@
         </marquee>
 
         <section class="section">
-            <div class="container">
+            <div class="containercompras">
                 <div class="grid">
                     <!-- Aquí van tus artículos -->
                     <article class="card">

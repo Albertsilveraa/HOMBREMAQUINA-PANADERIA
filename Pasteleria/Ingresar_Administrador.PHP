@@ -39,7 +39,7 @@
             </form>
         </th>
 
-        <th>
+        <th class="create">
             <img src="Imagenes/imagen_administrador.png" width="150" height="150">
         </th>
     </tr>

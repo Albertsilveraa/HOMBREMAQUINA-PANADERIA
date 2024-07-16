@@ -14,7 +14,7 @@ h2,h3,p {
     margin: 0;
 }
 
-.container {
+.containercompras {
     max-width: 1250px;
     margin: 0 auto;
 }
@@ -190,5 +190,77 @@ h2,h3,p {
 
 #precio-final {
     font-family: cursive;
+}
+
+/* Adaptaciones para pantallas más pequeñas */
+
+/* Adaptaciones para pantallas más pequeñas */
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 80px; /* Más espacio entre artículos */
+    }
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 70px; /* Más espacio entre artículos */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 60px; /* Más espacio entre artículos */
+    }
+
+    .card__image {
+        max-width: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    .card__info h2 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .card__info p, .card_lista {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .card__price {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: 1fr;
+        grid-gap: 50px; /* Más espacio entre artículos */
+    }
+
+    .card__image {
+        max-width: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    .card__info h2 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .card__info p, .card_lista {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .card__price {
+        font-size: 12px;
+    }
 }
 

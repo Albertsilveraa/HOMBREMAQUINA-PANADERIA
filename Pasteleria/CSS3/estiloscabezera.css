@@ -31,7 +31,6 @@ body {
 nav{
     background-color: white;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-    border: 1px solid black;
     
   }
   nav ul{
@@ -251,17 +250,6 @@ nav{
 
 /*DETALLE IMAGENES*/
 
-
-.logo-ses {
-    display: block;
-}
-
-.general {
-    display: flex;
-    justify-content: space-between;
-    padding: 36px;
-}
-
 /*CHEFS*/
 
 .chefs .iconos-nosotros {
@@ -315,3 +303,55 @@ nav{
 
 /*CHEFS*/
 
+
+/*Eleccion*/
+
+.logo-ses {
+  display: block;
+}
+
+.general {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 1370px) {
+  .logo-ses {
+    display: none;
+  }
+
+  .general {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tipo {
+    text-align: center;
+  }
+
+  .ico-sesi {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sesio {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 660px) {
+  .ico-sesi {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sesio {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 530px) {
+  .create {
+    display: none;
+  }
+}

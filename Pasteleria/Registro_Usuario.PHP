@@ -49,7 +49,7 @@ require_once('conexionBD.PHP');
                 <a href="Ingresar_Usuario.PHP">Iniciar Sesión</a>
             </p>
         </th>
-        <th>
+        <th class="create">
             <img src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/217/3837693217_4c05142e-8d8c-4b2d-bfd5-cdc81cd77690.png?cb=1601574946" width="300" height="300">
         </th>
     </tr>
