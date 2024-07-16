@@ -147,34 +147,75 @@ nav{
 /*CENTRAR CONTENIDO*/
 
 .contenedor {
-    margin: 0rem 10rem;
+  margin: 0 2rem;
 }
 
 .centrado {
-    text-align: center;
+  text-align: center;
 }
 
-/*INTRODUCCION POSICION*/
-
 .iconos {
-    padding: 16px 16px;
+  padding: 16px;
+  flex-basis: 100%;
 }
 
 .iconos-nosotros {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .iconos img {
-    max-width: 100%;
-    flex-basis: calc(33.3%-50px);
-    transition: all 0.6s linear;
+  max-width: 100%;
+  height: auto;
+  transition: all 0.6s linear;
 }
 
 .iconos img:hover {
-    background-color: darkgreen;
-    border-radius: 100%;
+  background-color: darkgreen;
+  border-radius: 100%;
 }
+
+.desta img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: all 0.6s linear;
+}
+
+.desta img:hover{
+  background-color: darkgreen;
+  border-radius: 100%;
+}
+
+@media (min-width: 768px) {
+  .contenedor {
+      margin: 0 4rem;
+  }
+
+  .iconos {
+      flex-basis: calc(33.3% - 32px);
+  }
+
+  .desta img{
+    height: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contenedor {
+      margin: 0 10rem;
+  }
+
+  .iconos-nosotros {
+      justify-content: space-between;
+  }
+
+  .iconos {
+      flex-basis: calc(33.3% - 32px);
+  }
+}
+
 
 /*DESARROLLO POSICION*/
 
@@ -210,9 +251,6 @@ nav{
 
 /*DETALLE IMAGENES*/
 
-img {
-    max-width: 100%;
-}
 
 .logo-ses {
     display: block;
@@ -224,4 +262,56 @@ img {
     padding: 36px;
 }
 
+/*CHEFS*/
+
+.chefs .iconos-nosotros {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0; 
+}
+
+.chefs .iconos {
+  text-align: center;
+  margin: 0; 
+  padding: 0;
+}
+
+.chefs .iconos:nth-child(2) {
+  margin-top: 80px; 
+}
+
+.chefs .iconos img {
+  width: 100%;
+  height: auto;
+  transition: all 0.6s linear;
+  margin: 0; 
+  padding: 0;
+}
+
+.chefs .iconos img:hover {
+  background-color: darkgreen;
+  border-radius: 10%;
+}
+
+@media (max-width: 1024px) {
+  .chefs .iconos-nosotros {
+      grid-template-columns: 1fr 1fr;
+  }
+
+  .chefs .iconos:nth-child(2) {
+      margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .chefs .iconos-nosotros {
+      grid-template-columns: 1fr;
+  }
+
+  .chefs .iconos:nth-child(2) {
+      margin-top: 20px;
+  }
+}
+
+/*CHEFS*/
 
