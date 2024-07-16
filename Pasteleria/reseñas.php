@@ -7,129 +7,15 @@
     <link rel="stylesheet" type="text/css" href="CSS3/estiloscabezera.css">
     <link rel="icon" type="Imagenes/png" href="Imagenes/Logo_Empresa.png">
     <link rel="stylesheet" type="text/css" href="CSS3/footer.css">
+    <link rel="stylesheet" type="text/css" href="CSS3/valoracion.css">
 
     <?php
     include 'encabezado.php';
     ?>
 
-    <style>
-        .bodyreseña {
-            font-family: Urbanist, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 85vh;
-            background-color: #f2f2f2;
-        }
-
-        .containerreseña {
-            display: flex;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .review-form,
-        .map {
-            width: 500px;
-            margin: 10px;
-        }
-
-        .review-form h2 {
-            margin-bottom: 20px;
-        }
-
-        .review-form label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .review-form input,
-        .review-form textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .review-form textarea {
-            resize: vertical;
-            max-height: 200px;
-            min-height: 80px;
-        }
-
-        .review-form .star-rating {
-            display: flex;
-            justify-content: space-between;
-            direction: rtl;
-            margin-bottom: 10px;
-        }
-
-        .review-form .star-rating input {
-            display: none;
-        }
-
-        .review-form .star-rating label {
-            font-size: 30px;
-            color: #ccc;
-            cursor: pointer;
-        }
-
-        .review-form .star-rating input:checked~label,
-        .review-form .star-rating input:checked~label~label {
-            color: gold;
-        }
-
-        .review-form button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: orange;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .review-form button:hover {
-            background-color: orange;
-        }
-
-        .map iframe {
-            width: 100%;
-            height: 200px;
-            border-radius: 4px;
-        }
-
-        .dynamic-title {
-            font-size: 35px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            /* Sombra suave */
-            background-color: black;
-            /* Color de fondo */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            /* Sombra elevada */
-            text-align: center;
-            margin: 5px auto;
-            width: fit-content;
-        }
-
-    </style>
-
 </head>
-
 <body>
-
-
+    <br><br>
     <h1 class="dynamic-title">Valoraciones</h1>
 
     <section class="bodyreseña">
